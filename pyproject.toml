@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "whatchanged-mcp"
+version = "0.1.0"
+description = "A read-only Python MCP server for GitHub Actions CI failure analysis"
+authors = ["whatchanged-mcp contributors"]
+license = "MIT"
+readme = "README.md"
+keywords = ["mcp", "github", "ci", "actions", "debugging"]
+packages = [{include = "whatchanged_mcp", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mcp = "^1.0.0"
+requests = "^2.28.0"
+
+[tool.poetry.group.dev.dependencies]
+hypothesis = "^6.0.0"
+pytest = "^7.0.0"
+pytest-asyncio = "^0.21.0"
+responses = "^0.23.0"
+
+[tool.poetry.scripts]
+whatchanged-mcp = "whatchanged_mcp.server:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
